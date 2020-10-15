@@ -18,7 +18,7 @@
 
   </form>
 
-  <div id="output_message" style="margin:30px;width:400px;;height:40px;font-size: 15pt;">
+  <div id="output_message" style="margin:20px;width:600px;;height:40px;font-size: 20pt;">
   </div>
 
   <script language="javascript" type="text/javascript">
@@ -34,41 +34,54 @@
     }else if(salary <= 1625000){
       var deduction = 550000
       var income = salary - deduction
-      income = income.toLocaleString() +"円";
 
     }else if(salary <= 1800000){
       var deduction = salary*0.4 + 100000
       var income = salary - deduction
-      income = income.toLocaleString() +"円";
 
     }else if(salary <= 3600000){
       var deduction = salary*0.3 + 80000
       var income = salary - deduction
-      income = income.toLocaleString() +"円";
 
     }else if(salary <= 6600000){
       var deduction = salary*0.2 + 440000
       var income = salary - deduction
-      income = income.toLocaleString() +"円";
 
     }else if(salary <= 8500000){
       var deduction = salary*0.1 + 1100000
       var income = salary - deduction
-      income = income.toLocaleString() +"円";
 
     }else if(salary > 8500000){
       var deduction = 1950000
       var income = salary - deduction
-      income = income.toLocaleString() +"円";
 
     }else{
       var deduction = "エラー"
       var income = "エラー"
     }
+
+    if(income <=9000000){
+      var Judgment = "区分A／控除額48万円"
+    }else if(income <=9500000){
+      var Judgment = "区分B／控除額48万円"
+    }else if(income <=10000000){
+      var Judgment = "区分C／控除額48万円"
+    }else if(income <=24000000){
+      var Judgment = "区分空欄／控除額48万円"
+    }else if(income <=24500000){
+      var Judgment = "区分空欄／控除額32万円"
+    }else if(income <=25000000){
+      var Judgment = "区分空欄／控除額16万円"
+    }else{
+      var Judgment = "エラー、または個別問合せ"
+    }
+
     salary = salary.toLocaleString() +"円"
     deduction = deduction.toLocaleString() +"円"
+    income = income.toLocaleString() +"円";
+
     output_value
-    = "入力した給与収入金額【" + salary + "】の<br>給与所得金額は【" + income + "】です。<br><br><br>＜参考＞<br>給与所得控除額は【▲" + deduction + "】です。";
+    = "給与所得金額は【" + income + "】です。<br>判定は 【" + Judgment + "】です。<br><br>＜参考＞<br>給与の収入金額【" + salary + "】<br>給与所得控除額【▲" + deduction + "】";
 
 
     document.getElementById("output_message").innerHTML = output_value;
